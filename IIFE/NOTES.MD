@@ -25,7 +25,7 @@
 - When you want one-time setup code.
 - When you want private variables that other parts of your code can’t touch.
 
-# Ways to create IIFE
+# Ways to create IIFE ..
 
 1. Classic IIFE (Function Expression)
 
