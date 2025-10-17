@@ -1,6 +1,6 @@
 # What is Currying ?
 
-- Currying is a process transforming a function which takes multiple arguments into a sequence of function . each taking one arg at a time .
+- Currying is a process of transforming a function which takes multiple arguments into a sequence of function . each taking one arg at a time .
 
 ## Normal Function
 

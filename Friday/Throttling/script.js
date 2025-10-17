@@ -1,19 +1,26 @@
-function print() {
-  console.log("Throttled function called!");
-}
+function throttling(func, delayTime) {
+  let timeout = null;
 
-function throttle(fn, limit) {
-  let lastCall = 0;
-  return function (...args) {
-    const now = Date.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
-      fn.apply(this, args);
+  return (...args) => {
+    if (!timeout) {
+      func(...args); // calling fun if timeout is null
+      timeout = setTimeout(() => {
+        timeout = null;
+      }, delayTime);
     }
   };
 }
 
-const throttledPrint = throttle(print, 2000);
+function fun() {
+  console.log("heloo");
+}
 
-window.addEventListener("scroll", throttledPrint);
-// Function will run at most once every 2 seconds while scrolling
+const throtlled = throttling(fun, 5000);
+throtlled();
+throtlled();
+setTimeout(() => {
+  throtlled();
+}, 3000);
+setTimeout(() => {
+  throtlled();
+}, 7000);
