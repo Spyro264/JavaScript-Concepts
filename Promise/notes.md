@@ -4,6 +4,21 @@
 - in simpler words promise is like a real word promise made by people either they will fullfill the promise or may not . but definetly we will recieve somwthing if priomise is made.
 - once you use a prmoise definetly you are getting something in return either success or failure .
 
+# Is Promise Asynchronous ?
+
+- No Promises are not asynchronous.
+- Promise RESULT handling is async.
+- Promoise CREATION is sync.
+- Promise executor runs immediately.
+- Promise handlers (then/catch/finally) run asynchronously.
+
+# Important
+
+- Promises are NOT cancellable
+- Cancellable means : a way to stop underlying operation
+- A Promise has only ONE responsibility
+- Once the promise changes its state . it is immutable , it cannot be stopped and it cannot be reset
+
 ## Example
 
 ```
@@ -23,7 +38,7 @@ const promise = new Promise((resolve, reject) => {
 # Problems Before Promise
 
 - Java Script is a `single threaded` . only one task runs at a time.
-- when we do something that takes time ( fetching api etc ) . if js waits it woul lead to freeze in ui/ browser.
+- when we do something that takes time ( fetching api etc ) . if js waits it would lead to freeze in ui/ browser.
 - Before `promises` we have `callbacks` , they are hard read and understandable.
 
 ## Callback Hell
@@ -597,4 +612,57 @@ alpha after await 1
 alpha after await 2
 timeout inside beta
 timeout 1
+```
+
+# Promises are eager, not lazy (most people get this wrong) 🤯
+
+```
+const p = new Promise((resolve) => {
+  console.log("EXECUTED");
+  resolve(10);
+});
+
+console.log("END");
+
+```
+
+## output
+
+```
+EXECUTED
+END
+
+```
+
+- The executor function runs immediately when the Promise is created
+  NOT when .then() is attached.
+- “Promise runs when I call then” ( wrong ).
+- Promise runs when it is constructed
+
+# .then() does NOT return the same promise 🤯
+
+```
+const p1 = Promise.resolve(10);
+
+const p2 = p1.then(x => x * 2);
+
+console.log(p1 === p2); // false
+
+```
+
+- .then() always returns a new Promise
+- That new promise:
+  resolves with the return value
+  rejects if an error is thrown
+
+# Return value rules inside .then() (super important)
+
+```
+Promise.resolve(1)
+  .then(x => x + 1)          // returns value
+  .then(x => Promise.resolve(x + 1)) // returns promise
+  .then(x => { throw x })    // throws error
+  .then(x => console.log(x))
+  .catch(e => console.log(e));
+
 ```
