@@ -3,6 +3,7 @@
 A closure is a function that remembers the variables from the place where it was created , even after the outer function finished execution.
 In Technicall words . A closure is a combination of a function and the lexical environment within which that function has been created.
 What is lexical Environment : The lexical environment is an internal JS structure that contains
+If a function accesses ANY variable that is not its own local variable, a closure is formed.
 
 1. Environment Record → actual variables (let, const, function params)
 2. Outer Lexical Environment reference → link to parent scope
