@@ -1,7 +1,7 @@
 # What Is TDZ (Temporal Dead Zone) ?
 
 - TDZ is a time between when a variable allocated memory and when it initializes with a value.
-- During this time accessing it throwsReferecne error.
+- During this time accessing it throws Referecne error.
 - It only applies for let , const and class not for var.
 - Why it is called as Temporal coz it occurs only for specifc time.
 
