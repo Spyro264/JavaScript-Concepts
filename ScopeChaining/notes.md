@@ -3,7 +3,7 @@
 - First what is scope ? -> Where variables are accessible code.
 - Scope chain is created when function is defined not when it is called.
 
-# Javascriot has
+# Javascript has
 
 1. Global scope
 2. Block scope
